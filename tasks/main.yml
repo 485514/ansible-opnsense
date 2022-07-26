@@ -137,12 +137,8 @@
   shell: srm "{{ local_config_path }}"
   tags: clean
 
-- name: reload
-  command: "{{ item }}"
-  with_items:
-    - configctl filter sync
-    - configctl service reload all
-    - configctl webgui restart
+- name: reboot
+  reboot:
   when: config.changed
   tags: reload
 ...
