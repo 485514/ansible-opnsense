@@ -3,6 +3,8 @@ ansible-opnsense
 
 Ansible role to configure OPNsense firewalls
 
+Mirrored to https://github.com/485514/ansible-opnsense
+
 Requirements
 ------------
 
