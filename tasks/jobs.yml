@@ -1,0 +1,11 @@
+- name: jobs jobs
+  delegate_to: localhost
+  xml:
+    path: "{{ local_config_path }}"
+    xpath: "/opnsense/OPNsense/Cron/jobs/job[@uuid=\"{{ item.0.uuid }}\"]/{{ item.1.key }}"
+    value: "{{ item.1.value }}"
+    pretty_print: yes
+  with_subelements:
+    - "{{ opn_jobs.jobs | default({}) }}"
+    - settings
+  when: opn_jobs is defined
