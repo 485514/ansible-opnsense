@@ -1,0 +1,21 @@
+- name: IDS general
+  delegate_to: localhost
+  xml:
+    path: "{{ local_config_path }}"
+    xpath: "/opnsense/OPNsense/IDS/general/{{ item.key }}"
+    value: "{{ item.value }}"
+    pretty_print: yes
+  with_dict: "{{ opn_ids.general | default({}) }}"
+  when: opn_ids is defined
+
+- name: IDS files
+  delegate_to: localhost
+  xml:
+    path: "{{ local_config_path }}"
+    xpath: "/opnsense/OPNsense/IDS/files/file[@uuid=\"{{ item.0.uuid }}\"]/{{ item.1.key }}"
+    value: "{{ item.1.value }}"
+    pretty_print: yes
+  with_subelements:
+    - "{{ opn_ids.files | default({}) }}"
+    - settings
+  when: opn_ids is defined

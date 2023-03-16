@@ -15,7 +15,7 @@
 - name: user
   include: user.yml
   tags: user
-  
+
 - name: group
   include: group.yml
   tags: group
@@ -58,7 +58,7 @@
 - name: bridges
   include: bridges.yml
   tags: bridges
-  
+
 - name: virtualip
   include: virtualip.yml
   tags: virtualip
@@ -70,11 +70,11 @@
 - name: filter
   include: filter.yml
   tags: filter
-  
+
 - name: gateways
   include: gateways.yml
   #when: prod | default([])
-  tags: gateways 
+  tags: gateways
 
 - name: hasync
   include: hasync.yml
@@ -91,6 +91,14 @@
 - name: syslog
   include: syslog.yml
   tags: syslog
+
+- name: jobs
+  include: jobs.yml
+  tags: jobs
+
+- name: ids
+  include: ids.yml
+  tags: ids
 
 - name: staticroutes
   include: staticroutes.yml
